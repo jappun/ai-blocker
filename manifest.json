@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "AI Blocker",
+    "description": "Try it yourself first",
+    "version": "1.0",
+    "host_permissions": [
+        "https://chatgpt.com/*",
+        "https://claude.ai/*",
+        "https://example.com/*"
+    ],
+    "content_scripts": [
+        {
+            "matches":  ["https://chatgpt.com/*","https://claude.ai/*",
+            "https://example.com/*"],
+            "js": ["content-script.js"]
+        }
+    ]
+
+  }
