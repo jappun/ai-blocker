@@ -8,13 +8,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 9999; // button on inspect my elements dont need to be on top
+    font-family: "Courier New", monospace;
+
 }
 
-#blocker-msg{
+.blocker-msg{
     background: white;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    /* border-radius: 15px; */
+}
+
+.btn {
+    font-family: "Courier New", monospace;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border: 2px solid black;
+    margin: 1em;
+    padding: 10px;
+    border-radius: 10px;
 }
