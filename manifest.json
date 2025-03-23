@@ -10,10 +10,9 @@
     ],
     "content_scripts": [
         {
-            "matches":  ["https://chatgpt.com/*","https://claude.ai/*",
-            "https://example.com/*"],
-            "js": ["content-script.js"]
+            "matches": ["https://chatgpt.com/*", "https://claude.ai/*", "https://example.com/*"],
+            "js": ["content-script.js"],
+            "css": ["styles.css"]
         }
     ]
-
-  }
+}
