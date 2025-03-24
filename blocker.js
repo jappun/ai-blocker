@@ -1,5 +1,38 @@
+function setEventListeners(container, shadowDOM) {
+
+    const q1 = shadowDOM.getElementById("q1");
+    const yes1 = shadowDOM.getElementById("yes-1");
+    const no1 = shadowDOM.getElementById("no-1");
+
+    const q2 = shadowDOM.getElementById("q2");
+    const yes2 = shadowDOM.getElementById("yes-2");
+    const no2 = shadowDOM.getElementById("no-2");
+
+    const timer = shadowDOM.getElementById("timer");
+
+
+    yes1.addEventListener("click", () => {
+        q1.style.display = "none";
+        q2.style.display = "block";
+    })
+
+    no1.addEventListener("click", () => {
+        q1.style.display = "none";
+        timer.style.display = "block";
+    })
+
+    yes2.addEventListener("click", () => {
+        q2.style.display = "none";
+        container.style.display = "none";
+    })
+
+    no2.addEventListener("click", () => {
+        q2.style.display = "none";
+        timer.style.display = "block";
+    })
+}
 function block() {
-    alert("we should see something")
+    // alert("we should see something") // just to test we properly capture urls
 
     const container = document.createElement("div");
     container.id = "extension-container";
@@ -34,6 +67,7 @@ function block() {
             const blockerContainer = document.createElement("div");
             blockerContainer.innerHTML = html;
             shadowDOM.appendChild(blockerContainer);
+            setEventListeners(container, shadowDOM);
         })
         .catch(error => {console.error("failed to style", error)});
     }).catch(error => {console.error("failed to block site", error)});
