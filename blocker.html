@@ -1,12 +1,12 @@
 <div id="blocker-overlay">
     <div class="blocker-msg" id="q1">
-        <h2>is it ethical to use ai for this task?</h2>
+        <h2>is it ethical to use ai for this?</h2>
         <button class="btn" id="yes-1">yes</button>
         <button class="btn" id="no-1">no</button>
     </div>
 
     <div class="blocker-msg" id="q2" style="display:none">
-        <h2>would it be rewarding to achieve this task by myself?</h2>
+        <h2>would it be rewarding to do this by myself?</h2>
         <button class="btn" id="yes-2">yes</button>
         <button class="btn" id="no-2">no</button>
     </div>
@@ -17,12 +17,17 @@
         <button class="btn" id="no-3">no</button>
     </div>
 
+    <div class="blocker-msg" id="done" style="display:none">
+        <h2>you can use ai if you want</h2>
+        <button class="btn" id="ok">ok</button>
+    </div>
+
     <div id="timer" style="display:none">
-        <h2>do it yourself</h2>
+        <h2>you should do it yourself</h2>
         <form id="timer-form">
             <input type="text" inputmode="numeric" id="m" class="timer-input" placeholder="20" value="20" min="0">
             <h2>:</h2>
-            <input type="text" inputmode="numeric" id="s"  class="timer-input" placeholder="00" value="00" min="0" max="59">
+            <input type="text" inputmode="numeric" id="s"  class="timer-input" placeholder="00" value="00" min="0">
         </form>
         <button class="btn" id="start">block</button> 
     </div>

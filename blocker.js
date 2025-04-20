@@ -37,6 +37,10 @@ async function setOverlay(container, shadowDOM) {
     const m = shadowDOM.getElementById("m");
     const s = shadowDOM.getElementById("s");
 
+    const done = shadowDOM.getElementById("done");
+    const ok = shadowDOM.getElementById("ok");
+
+
     // check if its already blocked
     const storedEndBlock = await getEndBlock();
     const endBlock = new Date(storedEndBlock);
@@ -78,16 +82,22 @@ async function setOverlay(container, shadowDOM) {
     })
 
     no2.addEventListener("click", () => {
-        container.style.display = "none";
+        q2.style.display = "none";
+        done.style.display="block";
     })
 
     yes3.addEventListener("click", () => {
-        container.style.display = "none";
+        q3.style.display = "none";
+        done.style.display="block";
     })
 
     no3.addEventListener("click", () => {
         q3.style.display = "none";
         timer.style.display = "block";
+    })
+
+    ok.addEventListener("click", () =>  {
+        container.style.display = "none";
     })
 
     start.addEventListener("click", () => {
