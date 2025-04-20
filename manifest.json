@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "AI Blocker",
+    "name": "Should I AI?",
     "description": "Try it yourself first",
     "version": "1.0",
     
@@ -19,11 +19,7 @@
     "web_accessible_resources": [
         {
             "resources": ["blocker.html", "styles.css"],
-            "matches": ["https://chatgpt.com/*", "https://claude.ai/*", "https://example.com/*"]
+            "matches": ["https://chatgpt.com/*", "https://claude.ai/*"]
         }
-    ],
-    "action": {
-        "default_popup": "popup.html",
-        "default_title": "AI Blocker"
-    } 
+    ]
 }
