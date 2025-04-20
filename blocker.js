@@ -13,6 +13,7 @@ function setEventListeners(container, shadowDOM) {
     const no3 = shadowDOM.getElementById("no-3");
 
     const timer = shadowDOM.getElementById("timer");
+    const start = shadowDOM.getElementById("start");
 
 
     yes1.addEventListener("click", () => {
@@ -21,7 +22,6 @@ function setEventListeners(container, shadowDOM) {
     })
 
     no1.addEventListener("click", () => {
-        // container.style.display = "none";
         q1.style.display = "none";
         timer.style.display = "block";
     })
@@ -40,12 +40,30 @@ function setEventListeners(container, shadowDOM) {
     })
 
     no3.addEventListener("click", () => {
-        // container.style.display = "none";
         q3.style.display = "none";
         timer.style.display = "block";
     })
 
+    start.addEventListener("click", () => {
+        const minutes = parseInt(shadowDOM.getElementById("m").value);
+        const seconds = parseInt(shadowDOM.getElementById("s").value);
+        setTimer(minutes, seconds)
+
+    })
 }
+
+function setTimer(m, s) {
+    const date = new Date();
+    console.log("its currently: ", date);
+    console.log("setting timer to: ", m, ":", s);
+    date.setSeconds(date.getSeconds() + s);
+    date.setMinutes(date.getMinutes() + m);
+    console.log("so itll unblock at: ", date);
+    localStorage.setItem("blocked", true); 
+    localStorage.setItem("blockUntil", date); 
+}
+
+
 function block() {
     // alert("we should see something") // just to test we properly capture urls
 

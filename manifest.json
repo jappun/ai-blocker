@@ -3,6 +3,7 @@
     "name": "AI Blocker",
     "description": "Try it yourself first",
     "version": "1.0",
+    
     "host_permissions": [
         "https://chatgpt.com/*",
         "https://claude.ai/*",
