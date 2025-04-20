@@ -8,6 +8,10 @@ function setEventListeners(container, shadowDOM) {
     const yes2 = shadowDOM.getElementById("yes-2");
     const no2 = shadowDOM.getElementById("no-2");
 
+    const q3 = shadowDOM.getElementById("q3");
+    const yes3 = shadowDOM.getElementById("yes-3");
+    const no3 = shadowDOM.getElementById("no-3");
+
     const timer = shadowDOM.getElementById("timer");
 
 
@@ -17,19 +21,30 @@ function setEventListeners(container, shadowDOM) {
     })
 
     no1.addEventListener("click", () => {
+        // container.style.display = "none";
         q1.style.display = "none";
         timer.style.display = "block";
     })
 
     yes2.addEventListener("click", () => {
         q2.style.display = "none";
-        container.style.display = "none";
+        q3.style.display = "block";
     })
 
     no2.addEventListener("click", () => {
-        q2.style.display = "none";
+        container.style.display = "none";
+    })
+
+    yes3.addEventListener("click", () => {
+        container.style.display = "none";
+    })
+
+    no3.addEventListener("click", () => {
+        // container.style.display = "none";
+        q3.style.display = "none";
         timer.style.display = "block";
     })
+
 }
 function block() {
     // alert("we should see something") // just to test we properly capture urls

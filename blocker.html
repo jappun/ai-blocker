@@ -1,23 +1,29 @@
 <div id="blocker-overlay">
     <div class="blocker-msg" id="q1">
-        <h2>would it be rewarding to achieve this task?</h2>
+        <h2>is it ethical to use ai for this task?</h2>
         <button class="btn" id="yes-1">yes</button>
         <button class="btn" id="no-1">no</button>
     </div>
 
-    <!-- <div class="blocker-msg" id="q2.1" style="display:none">
-        <h2>have i tried to do this task without ai?</h2>
-        <button class="btn" id="yes-2.1">yes</button>
-        <button class="btn" id="no-2.1">no</button>
-    </div> -->
-
     <div class="blocker-msg" id="q2" style="display:none">
-        <h2>did i make a reasonable effort to do this without ai?</h2>
+        <h2>would it be rewarding to achieve this task by myself?</h2>
         <button class="btn" id="yes-2">yes</button>
         <button class="btn" id="no-2">no</button>
     </div>
 
+    <div class="blocker-msg" id="q3" style="display:none">
+        <h2>have i made reasonable effort to do this myself?</h2>
+        <button class="btn" id="yes-3">yes</button>
+        <button class="btn" id="no-3">no</button>
+    </div>
+
     <div id="timer" style="display:none">
-        <h1>This is a timer</h1>
+        <h2>try it yourself first</h2>
+        <form id="timer-form">
+            <input type="number" id="minutes" class="timer-input" placeholder="20" value="20" min="00">
+            <h2>:</h2>
+            <input type="number" id="seconds"  class="timer-input" placeholder="00" value="00" min="0">
+        </form>
+        <button class="btn">start</button> 
     </div>
 </div>
