@@ -11,4 +11,4 @@ If not, you'll be led to a timer to temporarily block the site while you do it y
 - [x] switch from local storage to chrome storage
 - [x] display timer on first load if in block mode
 - [ ] add more sites (currently: chatgpt, claude, gemini)
-- [ ] change the ethical question result
+- [x] change the ethical question result
