@@ -45,8 +45,19 @@ function setEventListeners(container, shadowDOM) {
     })
 
     start.addEventListener("click", () => {
-        const minutes = parseInt(shadowDOM.getElementById("m").value);
-        const seconds = parseInt(shadowDOM.getElementById("s").value);
+        start.display = "none";
+        const m = shadowDOM.getElementById("m");
+        const s = shadowDOM.getElementById("s");
+
+        m.readOnly = true;
+        s.readOnly = true;
+        m.addEventListener("wheel", e => e.preventDefault());
+        s.addEventListener("wheel", e => e.preventDefault());
+
+        const minutes = parseInt(m.value);
+        const seconds = parseInt(s.value);
+
+
         setTimer(minutes, seconds)
 
     })
@@ -62,40 +73,44 @@ function setTimer(m, s) {
     console.log("so itll unblock at: ", endBlock);
     localStorage.setItem("blocked", true); 
     localStorage.setItem("endBlock", endBlock); 
+    const shadowDOM = document.getElementById("extension-container").shadowRoot;
+    console.log("shadowDOM:" , shadowDOM);
+    shadowDOM.getElementById("m").value = 999;
+    shadowDOM.getElementById("s").value = 999;
 }
 
-function updateTimer() {
-    const now = new Date();
-    const endBlock = new Date(localStorage.getItem("endBlock"));
-    // const blocked = localStorage.getItem("blocked");
-    // if (blocked === "false" || blocked === null) {
-    //     // return;
-    // }
-    // if (now >= endBlock) {
-    //     // localStorage.setItem("blocked", false);
-    //     // localStorage.removeItem("endBlock");
-    //     // document.getElementById("extension-container").style.display = "none";
-    // } else {
-        const remaining = endBlock - now;
-        const minutes = Math.floor(remaining / 1000 / 60) % 60;
-        const seconds = Math.floor(remaining / 1000) % 60;
+// function updateTimer() {
+//     const now = new Date();
+//     const endBlock = new Date(localStorage.getItem("endBlock"));
+//     // const blocked = localStorage.getItem("blocked");
+//     // if (blocked === "false" || blocked === null) {
+//     //     // return;
+//     // }
+//     // if (now >= endBlock) {
+//     //     // localStorage.setItem("blocked", false);
+//     //     // localStorage.removeItem("endBlock");
+//     //     // document.getElementById("extension-container").style.display = "none";
+//     // } else {
+//         const remaining = endBlock - now;
+//         const minutes = Math.floor(remaining / 1000 / 60) % 60;
+//         const seconds = Math.floor(remaining / 1000) % 60;
 
-        const shadowDOM = document.getElementById("extension-container").shadowRoot;
-        shadowDOM.getElementById("m").innerHTML = minutes;
-        shadowDOM.getElementById("s").innerHTML = seconds;
-        console.log("time left: ", minutes, seconds);
-    }
+//         const shadowDOM = document.getElementById("extension-container").shadowRoot;
+//         shadowDOM.getElementById("m").innerHTML = minutes;
+//         shadowDOM.getElementById("s").innerHTML = seconds;
+//         console.log("time left: ", minutes, seconds);
+//     }
+// // }
+
+
+// function isBlocked() {
+//     const blocked = localStorage.getItem("blocked");
+//     if (blocked === "true") {
+//     setInterval(updateTimer, 1000);
+// }
 // }
 
-
-function isBlocked() {
-    const blocked = localStorage.getItem("blocked");
-    if (blocked === "true") {
-    setInterval(updateTimer, 1000);
-}
-}
-
-setInterval(isBlocked, 1000);
+// setInterval(isBlocked, 1000);
 
 
 
