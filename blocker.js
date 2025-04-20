@@ -1,4 +1,22 @@
-function setOverlay(container, shadowDOM) {
+async function setStorage(isBlocked, endBlock) {
+    try {
+        await chrome.storage.sync.set({endBlock: endBlock?.toISOString(), blocked:isBlocked});
+        console.log('Data saved');
+      } catch (error) {
+        console.error('Error:', error);
+      }
+}
+
+async function getEndBlock() {
+    try {
+        const result = await chrome.storage.sync.get(["endBlock"]);
+        return result.endBlock;
+      } catch (error) {
+        console.error('Error:', error);
+      }
+}
+
+async function setOverlay(container, shadowDOM) {
 
 
 
@@ -20,21 +38,24 @@ function setOverlay(container, shadowDOM) {
     const s = shadowDOM.getElementById("s");
 
     // check if its already blocked
-    const endBlock = new Date(localStorage.getItem("endBlock"));
+    const storedEndBlock = await getEndBlock();
+    const endBlock = new Date(storedEndBlock);
     const now = new Date();
     if (endBlock > now) {
         q1.style.display="none";
         start.style.display = "none";
+        timer.style.display="block";
         m.readOnly = true;
         s.readOnly = true;
         m.addEventListener("wheel", e => e.preventDefault());
         s.addEventListener("wheel", e => e.preventDefault());
         let remaining = new Date(endBlock - now);
-        remaining = remaining.getSeconds();
+        remaining = remaining.getMinutes() * 60 + remaining.getSeconds();
         const minutes = Math.floor(remaining / 60)
         const seconds = remaining % 60;
+        m.value = String(minutes);
+        s.value = ("0" + seconds).slice(-2);
         setTimer(minutes, seconds, remaining);
-        timer.style.display="block";
 
     }
     console.log("endblock: ", endBlock);
@@ -78,7 +99,7 @@ function setOverlay(container, shadowDOM) {
 
         const minutes = parseInt(m.value);
         const seconds = parseInt(s.value);
-        const remaining = minutes * 60 + seconds
+        const remaining = minutes * 60 + seconds;
 
         setTimer(minutes, seconds, remaining);
 
@@ -93,8 +114,7 @@ function setTimer(minutes, seconds, remaining) {
     endBlock.setSeconds(startBlock.getSeconds() + seconds);
     endBlock.setMinutes(startBlock.getMinutes() + minutes);
     console.log("so itll unblock at: ", endBlock);
-    localStorage.setItem("blocked", true); 
-    localStorage.setItem("endBlock", endBlock); 
+    setStorage(true, endBlock);
 
     const shadowDOM = document.getElementById("extension-container").shadowRoot;
     const m = shadowDOM.getElementById("m");
@@ -102,8 +122,7 @@ function setTimer(minutes, seconds, remaining) {
 
     setInterval(() => {
         if (remaining <= 0) {
-            localStorage.setItem("blocked", false);
-            localStorage.removeItem("endBlock");
+            setStorage(false, null);
             document.getElementById("extension-container").style.display = "none"; 
             return;
         } 
