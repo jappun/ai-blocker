@@ -16,12 +16,26 @@ function setOverlay(container, shadowDOM) {
 
     const timer = shadowDOM.getElementById("timer");
     const start = shadowDOM.getElementById("start");
-    
-    const endBlock = localStorage.getItem("endBlock");
+    const m = shadowDOM.getElementById("m");
+    const s = shadowDOM.getElementById("s");
+
+    // check if its already blocked
+    const endBlock = new Date(localStorage.getItem("endBlock"));
     const now = new Date();
-    if (new Date(endBlock) > now) {
+    if (endBlock > now) {
         q1.style.display="none";
+        start.style.display = "none";
+        m.readOnly = true;
+        s.readOnly = true;
+        m.addEventListener("wheel", e => e.preventDefault());
+        s.addEventListener("wheel", e => e.preventDefault());
+        let remaining = new Date(endBlock - now);
+        remaining = remaining.getSeconds();
+        const minutes = Math.floor(remaining / 60)
+        const seconds = remaining % 60;
+        setTimer(minutes, seconds, remaining);
         timer.style.display="block";
+
     }
     console.log("endblock: ", endBlock);
     console.log("endblock as date: ", Date(endBlock));
@@ -57,9 +71,6 @@ function setOverlay(container, shadowDOM) {
 
     start.addEventListener("click", () => {
         start.style.display = "none";
-        const m = shadowDOM.getElementById("m");
-        const s = shadowDOM.getElementById("s");
-
         m.readOnly = true;
         s.readOnly = true;
         m.addEventListener("wheel", e => e.preventDefault());
