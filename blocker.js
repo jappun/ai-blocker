@@ -53,19 +53,54 @@ function setEventListeners(container, shadowDOM) {
 }
 
 function setTimer(m, s) {
-    const date = new Date();
-    console.log("its currently: ", date);
+    const startBlock = new Date();
+    const endBlock = startBlock;
+    console.log("its currently: ", startBlock);
     console.log("setting timer to: ", m, ":", s);
-    date.setSeconds(date.getSeconds() + s);
-    date.setMinutes(date.getMinutes() + m);
-    console.log("so itll unblock at: ", date);
+    endBlock.setSeconds(startBlock.getSeconds() + s);
+    endBlock.setMinutes(startBlock.getMinutes() + m);
+    console.log("so itll unblock at: ", endBlock);
     localStorage.setItem("blocked", true); 
-    localStorage.setItem("blockUntil", date); 
+    localStorage.setItem("endBlock", endBlock); 
 }
+
+function updateTimer() {
+    const now = new Date();
+    const endBlock = new Date(localStorage.getItem("endBlock"));
+    // const blocked = localStorage.getItem("blocked");
+    // if (blocked === "false" || blocked === null) {
+    //     // return;
+    // }
+    // if (now >= endBlock) {
+    //     // localStorage.setItem("blocked", false);
+    //     // localStorage.removeItem("endBlock");
+    //     // document.getElementById("extension-container").style.display = "none";
+    // } else {
+        const remaining = endBlock - now;
+        const minutes = Math.floor(remaining / 1000 / 60) % 60;
+        const seconds = Math.floor(remaining / 1000) % 60;
+
+        const shadowDOM = document.getElementById("extension-container").shadowRoot;
+        shadowDOM.getElementById("m").innerHTML = minutes;
+        shadowDOM.getElementById("s").innerHTML = seconds;
+        console.log("time left: ", minutes, seconds);
+    }
+// }
+
+
+function isBlocked() {
+    const blocked = localStorage.getItem("blocked");
+    if (blocked === "true") {
+    setInterval(updateTimer, 1000);
+}
+}
+
+setInterval(isBlocked, 1000);
+
+
 
 
 function block() {
-    // alert("we should see something") // just to test we properly capture urls
 
     const container = document.createElement("div");
     container.id = "extension-container";

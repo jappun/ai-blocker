@@ -11,7 +11,7 @@
     ],
     "content_scripts": [
         {
-            "matches": ["https://chatgpt.com/*", "https://claude.ai/*", "https://example.com/*"],
+            "matches": ["https://chatgpt.com/*", "https://claude.ai/*"],
             "js": ["blocker.js"],
             "css": ["styles.css"]
         }
@@ -21,5 +21,9 @@
             "resources": ["blocker.html", "styles.css"],
             "matches": ["https://chatgpt.com/*", "https://claude.ai/*", "https://example.com/*"]
         }
-    ]
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "AI Blocker"
+    } 
 }
