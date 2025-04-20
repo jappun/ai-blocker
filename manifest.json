@@ -14,7 +14,7 @@
     ],
     "content_scripts": [
         {
-            "matches": ["https://chatgpt.com/*", "https://claude.ai/*"],
+            "matches": ["https://chatgpt.com/*", "https://claude.ai/*",  "https://gemini.google.com/*"],
             "js": ["blocker.js"],
             "css": ["styles.css"]
         }
@@ -22,7 +22,7 @@
     "web_accessible_resources": [
         {
             "resources": ["blocker.html", "styles.css"],
-            "matches": ["https://chatgpt.com/*", "https://claude.ai/*"]
+            "matches": ["https://chatgpt.com/*", "https://claude.ai/*",  "https://gemini.google.com/*"]
         }
     ]
 }
