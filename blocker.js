@@ -1,4 +1,6 @@
-function setEventListeners(container, shadowDOM) {
+function setOverlay(container, shadowDOM) {
+
+
 
     const q1 = shadowDOM.getElementById("q1");
     const yes1 = shadowDOM.getElementById("yes-1");
@@ -14,6 +16,15 @@ function setEventListeners(container, shadowDOM) {
 
     const timer = shadowDOM.getElementById("timer");
     const start = shadowDOM.getElementById("start");
+    
+    const endBlock = localStorage.getItem("endBlock");
+    const now = new Date();
+    if (new Date(endBlock) > now) {
+        q1.style.display="none";
+        timer.style.display="block";
+    }
+    console.log("endblock: ", endBlock);
+    console.log("endblock as date: ", Date(endBlock));
 
 
     yes1.addEventListener("click", () => {
@@ -90,7 +101,6 @@ function setTimer(minutes, seconds, remaining) {
         m.value = remainingMin;
         s.value = ("0" + remainingSec).slice(-2);
         remaining--;
-        console.log("time left should be: ", endBlock - new Date());
     }, 1000);
 }
 
@@ -130,7 +140,7 @@ function block() {
             const blockerContainer = document.createElement("div");
             blockerContainer.innerHTML = html;
             shadowDOM.appendChild(blockerContainer);
-            setEventListeners(container, shadowDOM);
+            setOverlay(container, shadowDOM);
         })
         .catch(error => {console.error("failed to style", error)});
     }).catch(error => {console.error("failed to block site", error)});

@@ -9,5 +9,6 @@ If not, you'll be led to a timer to temporarily block the site while you do it y
 
 ### Todo:
 - [ ] switch from local storage to chrome storage
-- [ ] bug: display timer if in block mode
+- [ ] display timer on first load if in block mode
 - [ ] add more sites
+- [ ] change the ethical question result

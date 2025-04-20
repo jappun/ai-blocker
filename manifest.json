@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Should I AI?",
-    "description": "Try it yourself first",
+    "description": "Because you can do things yourself",
     "version": "1.0",
     
     "host_permissions": [
