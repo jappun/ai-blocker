@@ -45,7 +45,7 @@ function setEventListeners(container, shadowDOM) {
     })
 
     start.addEventListener("click", () => {
-        start.display = "none";
+        start.style.display = "none";
         const m = shadowDOM.getElementById("m");
         const s = shadowDOM.getElementById("s");
 
@@ -56,27 +56,42 @@ function setEventListeners(container, shadowDOM) {
 
         const minutes = parseInt(m.value);
         const seconds = parseInt(s.value);
+        const remaining = minutes * 60 + seconds
 
-
-        setTimer(minutes, seconds)
+        setTimer(minutes, seconds, remaining);
 
     })
 }
 
-function setTimer(m, s) {
+function setTimer(minutes, seconds, remaining) {
     const startBlock = new Date();
     const endBlock = startBlock;
     console.log("its currently: ", startBlock);
-    console.log("setting timer to: ", m, ":", s);
-    endBlock.setSeconds(startBlock.getSeconds() + s);
-    endBlock.setMinutes(startBlock.getMinutes() + m);
+    console.log("setting timer to: ", minutes, ":", seconds);
+    endBlock.setSeconds(startBlock.getSeconds() + seconds);
+    endBlock.setMinutes(startBlock.getMinutes() + minutes);
     console.log("so itll unblock at: ", endBlock);
     localStorage.setItem("blocked", true); 
     localStorage.setItem("endBlock", endBlock); 
+
     const shadowDOM = document.getElementById("extension-container").shadowRoot;
-    console.log("shadowDOM:" , shadowDOM);
-    shadowDOM.getElementById("m").value = 999;
-    shadowDOM.getElementById("s").value = 999;
+    const m = shadowDOM.getElementById("m");
+    const s = shadowDOM.getElementById("s");
+
+    setInterval(() => {
+        if (remaining <= 0) {
+            localStorage.setItem("blocked", false);
+            localStorage.removeItem("endBlock");
+            document.getElementById("extension-container").style.display = "none"; 
+            return;
+        } 
+        let remainingMin = Math.floor(remaining / 60);
+        let remainingSec = remaining % 60;
+        m.value = remainingMin;
+        s.value = ("0" + remainingSec).slice(-2);
+        remaining--;
+        console.log("time left should be: ", endBlock - new Date());
+    }, 1000);
 }
 
 // function updateTimer() {
@@ -109,9 +124,6 @@ function setTimer(m, s) {
 //     setInterval(updateTimer, 1000);
 // }
 // }
-
-// setInterval(isBlocked, 1000);
-
 
 
 
