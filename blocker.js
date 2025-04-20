@@ -94,38 +94,6 @@ function setTimer(minutes, seconds, remaining) {
     }, 1000);
 }
 
-// function updateTimer() {
-//     const now = new Date();
-//     const endBlock = new Date(localStorage.getItem("endBlock"));
-//     // const blocked = localStorage.getItem("blocked");
-//     // if (blocked === "false" || blocked === null) {
-//     //     // return;
-//     // }
-//     // if (now >= endBlock) {
-//     //     // localStorage.setItem("blocked", false);
-//     //     // localStorage.removeItem("endBlock");
-//     //     // document.getElementById("extension-container").style.display = "none";
-//     // } else {
-//         const remaining = endBlock - now;
-//         const minutes = Math.floor(remaining / 1000 / 60) % 60;
-//         const seconds = Math.floor(remaining / 1000) % 60;
-
-//         const shadowDOM = document.getElementById("extension-container").shadowRoot;
-//         shadowDOM.getElementById("m").innerHTML = minutes;
-//         shadowDOM.getElementById("s").innerHTML = seconds;
-//         console.log("time left: ", minutes, seconds);
-//     }
-// // }
-
-
-// function isBlocked() {
-//     const blocked = localStorage.getItem("blocked");
-//     if (blocked === "true") {
-//     setInterval(updateTimer, 1000);
-// }
-// }
-
-
 
 function block() {
 
