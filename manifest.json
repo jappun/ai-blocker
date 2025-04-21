@@ -16,7 +16,8 @@
         {
             "matches": ["https://chatgpt.com/*", "https://claude.ai/*",  "https://gemini.google.com/*"],
             "js": ["blocker.js"],
-            "css": ["styles.css"]
+            "css": ["styles.css"],
+            "run_at": "document_idle"
         }
     ],
     "web_accessible_resources": [
