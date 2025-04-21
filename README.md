@@ -16,3 +16,4 @@ If not, you'll be led to a timer to temporarily block the site while you do it y
 
 ### Backlog: 
 - [ ] add more sites (currently: chatgpt, claude, gemini)
+- [ ] limit unlocked time
