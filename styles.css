@@ -15,11 +15,13 @@
     text-align: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     font-family: "Courier New", monospace;
+    color: #0cc0df;
 }
 
 .ext-btn {
-    background-color: black;
+    /* background-color: black; */
     color: white;
+    background-color: #0cc0df;
     cursor: pointer;
     border: 2px solid black;
     margin: 1em;
