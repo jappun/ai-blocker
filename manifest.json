@@ -17,9 +17,6 @@
     "permissions": [
         "storage"
     ],
-    "action": {
-        "default_popup": "popup.html"
-      },
     "content_scripts": [
         {
             "matches": ["https://chatgpt.com/*", "https://claude.ai/*",  "https://gemini.google.com/*"],

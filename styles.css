@@ -15,21 +15,26 @@
     text-align: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
     font-family: "Courier New", monospace;
-    color: #0cc0df;
+    color: #0890a8;
 }
 
 .ext-btn {
     /* background-color: black; */
     color: white;
-    background-color: #0cc0df;
+    background-color: #0890a8;
     cursor: pointer;
-    border: 2px solid black;
+    border: 2px solid #0890a8;
     margin: 1em;
     padding: 10px;
     border-radius: 10px;
     font-family: "Courier New", monospace;
     font-weight: bold;
     font-size: 20px;
+}
+
+.ext-btn:hover {
+    background-color: #0cc0df;
+    border: 2px solid #0cc0df;
 }
 
 
@@ -54,6 +59,10 @@
 
 .timer-input:focus {
     outline: none;
-    border: 2px solid black;
+    border: 2px solid #0cc0df;
     box-shadow: none;
+}
+
+input {
+    color: #0890a8;
 }
