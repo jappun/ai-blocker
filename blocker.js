@@ -99,6 +99,7 @@ async function setOverlay(container, shadowDOM) {
 
     ok.addEventListener("click", () =>  {
         container.style.display = "none";
+        document.body.removeAttribute("inert"); // allow interaction
     })
 
     nvm.addEventListener("click", () => {
@@ -154,6 +155,7 @@ function setTimer(minutes, seconds, remaining) {
         if (remaining <= 0) {
             setStorage(false, null);
             document.getElementById("extension-container").style.display = "none"; 
+            document.body.removeAttribute("inert"); // allow interaction
             return;
         } 
         let remainingMin = Math.floor(remaining / 60);
@@ -166,10 +168,11 @@ function setTimer(minutes, seconds, remaining) {
 
 
 function block() {
-
+    
+    document.body.setAttribute("inert", ""); // stop interaction
+    
     const container = document.createElement("div");
     container.id = "extension-container";
-
     container.style.position = "fixed";
     container.style.top = "0";
     container.style.left = "0";
@@ -180,8 +183,8 @@ function block() {
     container.style.alignItems = "center";
     container.style.justifyContent = "center";
     container.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+    document.documentElement.appendChild(container);
 
-    document.body.appendChild(container);
     const shadowDOM = container.attachShadow({ mode: "open" });
 
     const blocker = chrome.runtime.getURL("blocker.html");
