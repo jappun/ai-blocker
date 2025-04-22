@@ -106,6 +106,20 @@ async function setOverlay(container, shadowDOM) {
         timer.style.display="block";
     })
 
+    function checkInputs() {
+        const minutes = m.value.trim();
+        const seconds = s.value.trim();
+    
+        const valid =
+            /^\d+$/.test(minutes) &&
+            /^\d+$/.test(seconds) &&
+            (parseInt(minutes) > 0 || parseInt(seconds) > 0);
+    
+        start.disabled = !valid;
+    }
+    m.addEventListener("input", checkInputs);
+    s.addEventListener("input", checkInputs);
+
     start.addEventListener("click", () => {
         start.style.display = "none";
         m.readOnly = true;
