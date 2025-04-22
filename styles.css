@@ -22,7 +22,6 @@
     /* background-color: black; */
     color: white;
     background-color: #0890a8;
-    cursor: pointer;
     border: 2px solid #0890a8;
     margin: 1em;
     padding: 10px;
@@ -35,6 +34,7 @@
 .ext-btn:hover {
     background-color: #0cc0df;
     border: 2px solid #0cc0df;
+    cursor: pointer;
 }
 
 
@@ -55,14 +55,17 @@
     width: 100px;
     height: 70px;
     text-align: center;
+    color: #0890a8;
 }
 
 .timer-input:focus {
     outline: none;
     border: 2px solid #0cc0df;
     box-shadow: none;
+    color: #0890a8;
+
 }
 
-input {
+/* input {
     color: #0890a8;
-}
+} */

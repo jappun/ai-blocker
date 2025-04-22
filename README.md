@@ -12,9 +12,11 @@ If not, you'll be led to a timer to temporarily block the site while you do it y
 - [x] switch from local storage to chrome storage
 - [x] display timer on first load if in block mode
 - [x] more logical form flow
-- [ ] publish to chrome store
+- [x] submit to chrome for review
 
 ### Backlog: 
+- [x] restore button pointer on hover
+- [x] resolve css override in chatgpt search field
 - [ ] add more sites (currently: chatgpt, claude, gemini)
 - [ ] limit unlocked time
 - [ ] display timer in popup
